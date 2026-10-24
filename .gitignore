@@ -1,0 +1,6 @@
+pipeline/models/
+pipeline/fonts/
+pipeline/cache/
+pipeline/work/
+pipeline/out/
+__pycache__/
