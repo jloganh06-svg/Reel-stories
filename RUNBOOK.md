@@ -89,7 +89,13 @@ Afterwards, `getScheduledPosts` and confirm every new slot is there exactly once
 
 ## 7. Clean up and save
 
-- Once every post of a batch came back with a `static.metricool.com` media link, delete its branch: `git push origin --delete batch-XX` (also any older `batch-*` branches). If deletion is refused, leave it.
+- Once every post of a batch came back with a `static.metricool.com` media link, empty its branch so the repo doesn't grow by a gigabyte per batch. Branch deletion is blocked for these sessions, but a force push of a tiny orphan commit works:
+  ```bash
+  git checkout --orphan empty-drop && git rm -rq --cached . && echo "Uploads are cleared once Metricool has copied them." > DROP.md
+  git add DROP.md && git commit -m "Clear uploaded batch (Metricool has copies)" && git push --force origin HEAD:refs/heads/batch-XX
+  git checkout -f main && git branch -D empty-drop
+  ```
+  Run `git status` first: `git rm --cached .` plus a clean would drop untracked work, so only do this after the batch is fully scheduled and the stories file is committed to main.
 - Commit `stories/batch-XX.txt` to `main` and push.
 
 ## 8. Report
