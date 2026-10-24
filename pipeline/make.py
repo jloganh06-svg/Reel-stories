@@ -495,12 +495,8 @@ def main():
             if not want or (s["num"], pi + 1) in want:
                 jobs.append((s, pi))
     vc = None
-    gidx_of = {}
-    g = 0
-    for s in stories:
-        for pi in range(len(s["parts"])):
-            gidx_of[(s["num"], pi)] = g
-            g += 1
+    # background start point + mirroring come from the story number, so every batch gets fresh footage
+    gidx_of = {(s["num"], pi): (s["num"] - 1) * 4 + pi for s in stories for pi in range(len(s["parts"]))}
     for s, pi in jobs:
         tag = f"S{s['num']:02d}_P{pi + 1}"
         if vc is None and (args.retts or not os.path.exists(os.path.join(ROOT, "work", tag, "timeline_1x.json"))):

@@ -7,7 +7,9 @@ What the scheduled task does each time it fires. Goal: keep every account's TikT
 
 | Metricool brand (blogId) | TikTok | Timezone | Daily slots | Niches |
 | --- | --- | --- | --- | --- |
-| 7620181 | ReelStories123 | America/Chicago | 10:00, 18:00 | all (rotate) |
+| 7620181 | ReelStories123 | America/Chicago | 10:00, 15:00, 18:00 | all (rotate) |
+
+Three posts a day per account is the ceiling for now (Jack asked for the most that won't hurt the account). Do not go above 4 a day per account.
 
 When an account is added, add a row here. One video goes to exactly one account; never post the same video twice.
 
@@ -25,7 +27,7 @@ cd /home/claude/reel-stories && bash pipeline/setup.sh
 - `last` = latest scheduled publication time (if none, now).
 - `days_ahead` = whole days from today (local) to `last`'s date.
 - If `days_ahead >= 10`: make nothing for this account.
-- Else `stories_needed = min(4, ceil((10 - days_ahead) / 2))`. Each story = 4 posts = 2 days.
+- Else `stories_needed = min(6, ceil((10 - days_ahead) * slots_per_day / 4))`. Each story = 4 posts; at 3 slots a day that is 1.33 days.
 
 ## 3. Write the stories
 
@@ -63,7 +65,7 @@ Check every link returns HTTP 200 before scheduling.
 
 ## 6. Schedule in Metricool
 
-Slots continue from the slot after `last`: 10:00 then 18:00 local, every day. Parts of a story go in order.
+Slots continue from the slot after `last`, using the account's daily slots from the table (10:00, 15:00, 18:00 local). Parts of a story go in order. Never fill a slot that already has a post; if there are gaps before `last`, leave them.
 `date` must carry the correct UTC offset for that local time (use Python zoneinfo; mind daylight saving).
 Caption = `Part P/4: <story's Part 1 hook> #storytime #redditstories #aita #relationshipdrama #fyp`.
 

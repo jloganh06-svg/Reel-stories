@@ -52,9 +52,12 @@ Concrete details sell it: receipts, texts read word for word, prices, times, a s
 
 ## Rules
 
-- Rotate niches across a batch: cheating, wedding drama, family money, roommates, in-laws, friendships, workplace, neighbors. Never two of the same niche back to back.
+- Make them scandalous and juicy. Affairs, double lives, secret families, betrayals at weddings, revenge, hidden money, DNA and family secrets, workplace affairs, neighbors with secrets. Batch 02 (`stories/batch-02.txt`) is the reference for this tone.
+- Imply, never describe. "They were in the front seat together, and they were not talking about culture fit" is the ceiling. No sex scenes, no sexual detail, no nudity, no innuendo-heavy lines. TikTok keeps sexually suggestive videos off the For You page, and an account that keeps posting them gets pulled from recommendations and search entirely.
+- Rotate niches across a batch: cheating, wedding drama, family secrets, family money, roommates, in-laws, friendships, workplace, neighbors. Never two of the same niche back to back.
+- Twists beat shock. The best performers set up an obvious explanation in part 1 and reveal something different and worse (or funnier) by part 3.
 - New plot every time. Read every file in `stories/` first and do not reuse a plot, a twist or a narrator name from the last 20 stories.
 - Fictional people only. No real public figures, real brands accused of anything, or real businesses. Cities and chains used neutrally are fine.
-- TikTok safe: no sexual content, no graphic violence, no self-harm, no minors in romantic or sexual situations, no slurs or hate. Keep it PG-13.
+- TikTok safe: no explicit sexual content, no graphic violence, no self-harm, no minors in romantic or sexual situations, no slurs or hate. Keep it PG-13.
 - Write for the voice: no dashes as punctuation, no parentheses, no abbreviations like AITA or lol in narration (say "Am I wrong"), write "5am" or "4:30" plainly. Money as "$1,140" is fine.
 - Plain American English, conversational, a little imperfect. Contractions are good.
