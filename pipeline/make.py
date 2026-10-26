@@ -7,7 +7,7 @@ Usage (run pipeline/setup.sh once per fresh machine first):
   python3 make.py all --stories ../stories/batch-02.txt --out out/batch-02
   python3 make.py tts    ...   # narration only (cached per paragraph)
   python3 make.py render ...   # videos only
-Options: --speed 1.05 (default; keeps every part over 1 minute)  --voice af_heart
+Options: --speed 1.65 (default; about 300 words a minute, so parts need 330+ words to pass 1 minute)  --voice af_heart
          --only 11:2 (story 11 part 2) or --only 11 (all parts of story 11)
 """
 import argparse
@@ -472,7 +472,7 @@ def main():
     ap.add_argument("--bg", default=os.path.join(ROOT, "bg", "bg_916.mp4"))
     ap.add_argument("--out", default=os.path.join(ROOT, "out"))
     ap.add_argument("--voice", default="af_heart")
-    ap.add_argument("--speed", type=float, default=1.05)
+    ap.add_argument("--speed", type=float, default=1.65)
     ap.add_argument("--crf", type=int, default=23)
     ap.add_argument("--preset", default="veryfast")
     ap.add_argument("--maxrate", default="4500k")

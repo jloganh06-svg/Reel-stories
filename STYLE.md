@@ -27,7 +27,7 @@ Every story is an original, fictional, first-person drama in the style of a Redd
 
 ## Length (hard rule)
 
-- Every part: **240 to 290 words**. At the 1.05x render speed that is 63 to 76 seconds. Under about 225 words a part drops below TikTok's 1-minute payout minimum.
+- Every part: **330 to 380 words**. Videos render at 1.65x (about 300 words a minute, matching the pace of popular story videos Jack sent as a reference), so that is roughly 66 to 76 seconds. Under about 310 words a part drops below TikTok's 1-minute payout minimum.
 - Short paragraphs: mostly 1 to 3 sentences. Dialogue in its own paragraph.
 
 ## Hooks
@@ -49,6 +49,15 @@ Every story is an original, fictional, first-person drama in the style of a Redd
 4. Resolution: the truth comes out in a memorable scene, a clear consequence, a small human detail to close.
 
 Concrete details sell it: receipts, texts read word for word, prices, times, a specific object that comes back at the end.
+
+## Jack's favorite angle: double standards and manipulation
+
+Jack's reference story: "She forced me to open the relationship, but now she's demanding we become exclusive again." His girlfriend of four years pushed for it, called him controlling and cried when he hesitated, then flipped once it stopped suiting her. Write more stories like this, roughly every other story in a batch:
+
+- One person sets a rule for the narrator and breaks it themselves, or demands something they would never accept back.
+- Manipulation the viewer can spot before the narrator does: guilt trips, tears on cue, "you're being controlling", rewriting what was agreed, getting family or friends on their side.
+- The narrator honestly asks if they are in the wrong, and the hook makes viewers want to argue in the comments.
+- Payoff: the double standard gets exposed with receipts, their own words or texts quoted back to them.
 
 ## Rules
 

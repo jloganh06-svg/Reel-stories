@@ -33,16 +33,16 @@ cd /home/claude/reel-stories && bash pipeline/setup.sh
 
 - Read `STYLE.md` and every file in `stories/` first.
 - Next story number = highest `=== NN` in `stories/` + 1. Next batch name = `batch-XX`, one higher than the highest `stories/batch-*.txt`.
-- Write `stories/batch-XX.txt` following `STYLE.md` exactly. Check each part is 240 to 290 words (count them with a script) and rewrite any part outside that range.
+- Write `stories/batch-XX.txt` following `STYLE.md` exactly. Check each part is 330 to 380 words (count them with a script) and rewrite any part outside that range.
 
 ## 4. Render
 
 ```bash
 cd /home/claude/reel-stories/pipeline
-python3 make.py all --stories ../stories/batch-XX.txt --out out/batch-XX --speed 1.05
+python3 make.py all --stories ../stories/batch-XX.txt --out out/batch-XX --speed 1.65
 ```
 
-About 3 minutes per part on 2 CPUs; run it in the background and poll the log.
+About 1.5 to 3 minutes per part on 2 CPUs; run it in the background and poll the log.
 Then check every MP4 with ffprobe: 1080x1920, 30 fps, has audio, duration over 61 s.
 If a part is under 61 s, lengthen that part's text, then re-render just it with `--only NN:P --retts`.
 Spot-check one frame per story (card visible at 0.5 s, captions mid-video).
