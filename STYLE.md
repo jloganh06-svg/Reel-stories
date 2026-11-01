@@ -34,12 +34,21 @@ Every story is an original, fictional, first-person drama in the style of a Redd
 
 - Part 1, first paragraph: one or two sentences that give away the juicy conflict up front, first person. Often ends with "Am I wrong?", "Am I the jerk?" or "Am I the bad guy?". Example: "My fiancé reused the wedding vows from his first engagement, and I called off our wedding. Am I the monster?"
 - Part 2 starts: "Part 2 of <what the story is about>." Part 3 starts: "Part 3. <the new development>." Part 4 starts: "Final part. <the payoff teaser>."
-- The hook paragraph appears on screen as a card, so keep it under about 30 words.
+- The hook paragraph appears on screen as a card, so keep it under 22 words with the conflict in the first 8.
 
 ## Endings
 
-- Parts 1 to 3 end on a cliffhanger sentence, then a short call to action on its own line: "Follow for part 2." / "Part 3 is coming." / "Follow for the final part." (vary the wording).
-- Part 4 ends with a satisfying, specific payoff line. No call to action.
+- Parts 1 to 3 end on a cliffhanger sentence, then a specific comment question and a short follow line on its own line: "Would you have opened the envelope? Follow for part 2." (vary the wording; see "What the numbers say").
+- Part 4 ends with a satisfying, specific payoff line, then a one-line verdict question for the comments.
+
+## What the numbers say (first week, Oct 24 to 31, 2026)
+
+Every post landed 70 to 170 views, which is TikTok's first test pool, and none broke out. Across 18 posts: about 1 like per 100 views, zero comments, zero shares. TikTok pushes a video past the test pool when people comment, share and rewatch, so the next batches are written to start arguments:
+
+- **End parts 1 to 3 with a comment question, then the follow line.** Make it specific and two-sided, about the exact moment the part stops on: "Would you have said something at the rehearsal dinner, or waited? Follow for part 2." Not "Let me know what you think."
+- **Shorter hook cards: under 22 words, conflict in the first 8 words.** "My husband has a second wife in Phoenix" beats a setup sentence first.
+- **Parts 2 to 4 must make sense to a stranger.** Most viewers never saw part 1. The finale of the Phoenix story got 8 views and Gatlinburg part 3 got 44. The opening card restates the premise in a few words, then the new twist: "Final part of finding my husband's second family in Phoenix. His two wives sat him down together at a diner."
+- Part 4 ends with a verdict question instead of no call to action: "So, was I wrong to make him sign it?"
 
 ## Structure
 
