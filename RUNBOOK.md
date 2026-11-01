@@ -101,3 +101,17 @@ Afterwards, `getScheduledPosts` and confirm every new slot is there exactly once
 ## 8. Report
 
 Send Jack a short message: stories written (titles in a few words), how many posts scheduled, and the date the queue now runs to. Flag anything that failed.
+
+## Own-voice mode (optional, for TikTok Creator Rewards)
+
+TikTok's Creator Rewards program excludes fully AI-made videos. A part narrated by a real person counts as original input. When Jack sends recordings of himself reading parts:
+
+- Name each file after the part it reads: `S23_P2.m4a` is story 23, part 2 (also accepted: `23-2.m4a`). Any phone format works: m4a, mp3, wav, ogg, webm.
+- Put them in one folder and render with `--recordings <folder>`:
+  ```bash
+  python3 make.py all --stories ../stories/batch-XX.txt --out out/batch-XX --recordings <folder>
+  ```
+  Parts with a recording use Jack's voice (sped up 1.1x, change with `--rec-speed`); parts without one still use the AI voice.
+- Captions line up automatically: `own_voice.py` synthesizes the script with a reference voice and time-warps it onto the recording (tested: median word timing error 10 to 30 ms).
+- He must read the part's text as written, in order. Small slips and ad-libs are fine.
+- Videos narrated by Jack: set `isAigc` to false for TikTok (the voice and script delivery are his) only if no AI voice is in that video. The script itself was written with AI help, which does not require the label.

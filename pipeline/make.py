@@ -8,6 +8,8 @@ Usage (run pipeline/setup.sh once per fresh machine first):
   python3 make.py tts    ...   # narration only (cached per paragraph)
   python3 make.py render ...   # videos only
 Options: --speed 1.65 (default; about 300 words a minute, so parts need 330+ words to pass 1 minute)  --voice af_heart
+         --recordings DIR  use Jack's recorded reads (S11_P2.m4a etc.) instead of the AI voice; see own_voice.py
+         --rec-speed 1.1   speed-up applied to recorded reads
          --only 11:2 (story 11 part 2) or --only 11 (all parts of story 11)
 """
 import argparse
@@ -22,6 +24,8 @@ import time
 
 import numpy as np
 import soundfile as sf
+
+from own_voice import find_recording, narrate_from_recording
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 MODEL = os.path.join(ROOT, "models", "kokoro-timed.onnx")
@@ -391,19 +395,33 @@ def bg_duration(bg):
                                  "-of", "csv=p=0", bg], capture_output=True, text=True).stdout)
 
 
+_VOICES = {}
+
+
+def get_voice(name):
+    if name not in _VOICES:
+        _VOICES[name] = Voice(name)
+    return _VOICES[name]
+
+
 def render_part(story, pidx, gidx, args, vc=None):
     tag = f"S{story['num']:02d}_P{pidx + 1}"
     workdir = os.path.join(ROOT, "work", tag)
     paras = story["parts"][pidx]
     tl = os.path.join(workdir, "timeline_1x.json")
-    if not os.path.exists(tl) or args.retts:
+    rec = find_recording(args.recordings, story["num"], pidx + 1)
+    prev = json.load(open(tl)) if os.path.exists(tl) else None
+    if rec:   # own-voice mode: a recorded read of this part exists
+        if args.retts or not prev or prev.get("recording") != os.path.basename(rec):
+            narrate_from_recording(rec, paras, workdir, get_voice, narrate_part)
+    elif not prev or args.retts or prev.get("source") == "recording":
         if vc is None:
-            vc = Voice(args.voice)
+            vc = get_voice(args.voice)
         narrate_part(vc, paras, workdir)
     data = json.load(open(tl))
     if args.stage == "tts":
         return None
-    speed = args.speed
+    speed = args.rec_speed if rec else args.speed
     nar = speed_audio(workdir, speed)
     nar_dur = float(sf.info(nar).duration)
     words = [dict(w, start=w["start"] / speed, end=w["end"] / speed) for w in data["words"]]
@@ -479,6 +497,9 @@ def main():
     ap.add_argument("--bufsize", default="9000k")
     ap.add_argument("--only", default="", help="e.g. 1:1 or 3 (story) or 1:1,2:3")
     ap.add_argument("--retts", action="store_true")
+    ap.add_argument("--recordings", default="",
+                    help="folder of recorded reads (S11_P2.m4a ...); a part with a recording uses that voice")
+    ap.add_argument("--rec-speed", type=float, default=1.1, help="speed-up for recorded reads")
     args = ap.parse_args()
 
     stories = load_stories(args.stories)
@@ -499,8 +520,9 @@ def main():
     gidx_of = {(s["num"], pi): (s["num"] - 1) * 4 + pi for s in stories for pi in range(len(s["parts"]))}
     for s, pi in jobs:
         tag = f"S{s['num']:02d}_P{pi + 1}"
-        if vc is None and (args.retts or not os.path.exists(os.path.join(ROOT, "work", tag, "timeline_1x.json"))):
-            vc = Voice(args.voice)
+        if vc is None and not find_recording(args.recordings, s["num"], pi + 1) and \
+                (args.retts or not os.path.exists(os.path.join(ROOT, "work", tag, "timeline_1x.json"))):
+            vc = get_voice(args.voice)
         args_stage = argparse.Namespace(**vars(args))
         args_stage.stage = "tts" if args.stage == "tts" else "render"
         t0 = time.time()

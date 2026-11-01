@@ -4,7 +4,7 @@
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 
-pip install --break-system-packages -q kokoro-onnx soundfile brotli fonttools pillow numpy onnxruntime
+pip install --break-system-packages -q kokoro-onnx soundfile brotli fonttools pillow numpy onnxruntime librosa
 
 mkdir -p "$HERE/models" "$HERE/fonts"
 # Model export WITH phoneme durations (needed for word-timed captions) lives in the v1.1 release.
